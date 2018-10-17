@@ -59,8 +59,12 @@ cd /usr/src 2>&1 >> $log
 if [[ "${vermajor}" == "1" ]]; then
   wget http://dl.winehq.org/wine/source/${verurlstr}/wine-${ver}.tar.bz2 -O wine-${ver}.tar.bz2 2>&1 >> $log
   tar xjf wine-${ver}.tar.bz2 2>&1 >> $log
-elif [[ "${vermajor}" == "2" ]]; then
-  wget http://dl.winehq.org/wine/source/${verurlstr}/wine-${ver}.tar.xz -O wine-${ver}.tar.xz 2>&1 >> $log
+else
+  if [[ "${vermajor}" == "2" ]]; then
+    wget http://dl.winehq.org/wine/source/${verurlstr}/wine-${ver}.tar.xz -O wine-${ver}.tar.xz 2>&1 >> $log
+  elif [[ "${vermajor}" == "3" ]]; then
+    wget http://dl.winehq.org/wine/source/3.x/wine-${ver}.tar.xz -O wine-${ver}.tar.xz 2>&1 >> $log
+  fi
   tar xf wine-${ver}.tar.xz 2>&1 >> $log
 fi
 
